@@ -1,6 +1,6 @@
 import React from 'react'
 function AccountsIndex(props) {
-  const { accounts, balances, allowances } = props;
+  const { owner, accounts, balances, allowances } = props;
 
   const head = () => (
     <thead>
@@ -22,7 +22,7 @@ function AccountsIndex(props) {
               <tr key={i}>
                 <td>{account}</td>
                 <td>{balances[account]}</td>
-                <td>{allowances[account]}</td>
+                <td>{account === owner ? '-' : allowances[account]}</td>
               </tr>
             )
           })
