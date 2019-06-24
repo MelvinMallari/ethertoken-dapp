@@ -1,12 +1,13 @@
 import React from 'react'
 function AccountsIndex(props) {
-  const { balances } = props;
+  const { accounts, balances, allowances } = props;
 
   const head = () => (
     <thead>
       <tr>
         <th>Account</th>
         <th>Balance (wei)</th>
+        <th>Allowance (wei)</th>
       </tr>
     </thead>
   )
@@ -16,11 +17,12 @@ function AccountsIndex(props) {
       {head()}
       <tbody>
         {
-          balances.map((account, i) => {
+          accounts.map((account, i) => {
             return (
               <tr key={i}>
-                <td>{account.account}</td>
-                <td>{parseInt(account.balance._hex, 16)}</td>
+                <td>{account}</td>
+                <td>{balances[account]}</td>
+                <td>{allowances[account]}</td>
               </tr>
             )
           })
