@@ -70,6 +70,7 @@ class App extends React.Component {
   }
 
   transfer = (account, amount) => {
+    if (!this.isValidAccount(account)) return;
     const { contract, accounts } = this.state;
     contract.methods.transfer(account, amount).send({from: accounts[0]}, () => {
       this.loadAccountBalances();
@@ -78,6 +79,7 @@ class App extends React.Component {
   }
 
   transferFrom = (sender, source, to, amount) => {
+    if (!this.isValidAccount(sender, source, to)) return;
     this.state.contract.methods.transferFrom(source, to, amount).send({from: sender}, () => {
       this.loadAccountBalances();
       this.loadAllowances();
@@ -93,6 +95,7 @@ class App extends React.Component {
   }
 
   approve = (spender, amount) => {
+    if (!this.isValidAccount(spender)) return;
     const { contract, accounts } = this.state;
     contract.methods.approve(spender, amount).send({from: accounts[0]}, () => {
       this.loadAllowances();
@@ -100,6 +103,7 @@ class App extends React.Component {
   }
 
   increaseApproval = (spender, amount) => {
+    if (!this.isValidAccount(spender)) return;
     const { contract, accounts } = this.state;
     contract.methods.increaseApproval(spender, amount).send({from: accounts[0]}, () => {
       this.loadAllowances();
@@ -107,10 +111,17 @@ class App extends React.Component {
   }
 
   decreaseApproval = (spender, amount) => {
+    if (!this.isValidAccount(spender)) return;
     const { contract, accounts } = this.state;
     contract.methods.decreaseApproval(spender, amount).send({from: accounts[0]}, () => {
       this.loadAllowances();
     });
+  }
+
+  isValidAccount = (account, ...rest) => {
+    const accounts = [account, ...rest]
+    const someInvalid = accounts.some(account => this.state.accounts.indexOf(account) === -1);
+    return someInvalid ? false : true;
   }
 
   render = () => {
@@ -121,7 +132,7 @@ class App extends React.Component {
           <Header 
             account={accounts[0]} 
             totalSupply={totalSupply} />
-          <AccountsIndex 
+        <AccountsIndex 
             owner={accounts[0]}
             accounts={accounts}
             balances={balances}
