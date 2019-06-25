@@ -57,7 +57,6 @@ class App extends React.Component {
       const allowance = await contract.methods.allowance(accounts[0], accounts[i]).call();
       allowances[accounts[i]] = parseInt(allowance._hex, 16);
     }
-    debugger;
     this.setState({ allowances });
     return allowances;
   }
@@ -89,7 +88,20 @@ class App extends React.Component {
   approve = (spender, amount) => {
     const { contract, accounts } = this.state;
     contract.methods.approve(spender, amount).send({from: accounts[0]}, () => {
-      this.loadAccountBalances();
+      this.loadAllowances();
+    });
+  }
+
+  increaseApproval = (spender, amount) => {
+    const { contract, accounts } = this.state;
+    contract.methods.increaseApproval(spender, amount).send({from: accounts[0]}, () => {
+      this.loadAllowances();
+    });
+  }
+
+  decreaseApproval = (spender, amount) => {
+    const { contract, accounts } = this.state;
+    contract.methods.decreaseApproval(spender, amount).send({from: accounts[0]}, () => {
       this.loadAllowances();
     });
   }
@@ -109,7 +121,10 @@ class App extends React.Component {
         <DepositForm deposit={this.deposit} />
         <WithdrawForm withdraw={this.withdraw} />
         <TransferForm transfer={this.transfer} />
-        <ApprovalForm approve={this.approve} />
+        <ApprovalForm 
+          approve={this.approve}
+          increaseApproval={this.increaseApproval}
+          decreaseApproval={this.decreaseApproval} />
       </div>
     );
   }
