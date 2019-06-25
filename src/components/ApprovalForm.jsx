@@ -31,8 +31,10 @@ export class ApprovalForm extends Component {
   render() {
     return (
       <div>
-        <p>Approval Form</p>
-        <form >
+        <p className="center">Approval Form</p>
+        <form className="center">
+          <div className="vertical">
+
           <label>
             Account:
             <input 
@@ -54,6 +56,7 @@ export class ApprovalForm extends Component {
             <button type="button" onClick={this.increaseApproval}>Increase Approval</button>
             <button type="button" onClick={this.decreaseApproval}>Decrease Approval</button>
           </label>
+          </div>
         </form>
       </div>
     )

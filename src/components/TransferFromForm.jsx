@@ -22,42 +22,45 @@ export class TransferFromForm extends Component {
   render() {
     return (
       <div>
-        <p>TransferFrom Form</p>
-        <form >
-          <label>
-            Sender Account:
-            <input 
-            type="text"
-            placeholder="0"
-            value={this.state.senderAccount}
-            onChange={this.update('senderAccount')} />
-          </label>
-          <label>
-            Source Account:
-            <input 
-            type="text"
-            placeholder="0"
-            value={this.state.sourceAccount}
-            onChange={this.update('sourceAccount')} />
-          </label>
-          <label>
-            To Account:
-            <input 
-            type="text"
-            placeholder="0"
-            value={this.state.toAccount}
-            onChange={this.update('toAccount')} />
-          </label>
-          <label>
-            Amount:
-            <input 
-            type="number"
-            placeholder="0"
-            value={this.state.amount}
-            onChange={this.update('amount')} />
-          </label>
+        <p className="center">TransferFrom Form</p>
+        <form className="center">
+          <div className="vertical">
 
-          <button type="button" onClick={this.transferFrom}>Transfer</button>
+            <label>
+              Sender Account:
+              <input 
+              type="text"
+              placeholder="0"
+              value={this.state.senderAccount}
+              onChange={this.update('senderAccount')} />
+            </label>
+            <label>
+              Source Account:
+              <input 
+              type="text"
+              placeholder="0"
+              value={this.state.sourceAccount}
+              onChange={this.update('sourceAccount')} />
+            </label>
+            <label>
+              To Account:
+              <input 
+              type="text"
+              placeholder="0"
+              value={this.state.toAccount}
+              onChange={this.update('toAccount')} />
+            </label>
+            <label>
+              Amount:
+              <input 
+              type="number"
+              placeholder="0"
+              value={this.state.amount}
+              onChange={this.update('amount')} />
+            </label>
+
+            <button type="button" onClick={this.transferFrom}>Transfer</button>
+          </div>
         </form>
         
       </div>

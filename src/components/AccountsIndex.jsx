@@ -13,22 +13,24 @@ function AccountsIndex(props) {
   )
 
   return (
-    <table>
-      {head()}
-      <tbody>
-        {
-          accounts.map((account, i) => {
-            return (
-              <tr key={i}>
-                <td>{account}</td>
-                <td>{balances[account]}</td>
-                <td>{account === owner ? '-' : allowances[account]}</td>
-              </tr>
-            )
-          })
-        }
-      </tbody>
-    </table>
+    <div className="center">
+      <table>
+        {head()}
+        <tbody>
+          {
+            accounts.map((account, i) => {
+              return (
+                <tr key={i}>
+                  <td>{account}</td>
+                  <td>{balances[account]}</td>
+                  <td>{account === owner ? '-' : allowances[account]}</td>
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
+    </div>
   )
 }
 

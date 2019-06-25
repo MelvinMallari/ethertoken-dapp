@@ -20,27 +20,29 @@ export class TransferForm extends Component {
   render() {
     return (
       <div>
-        <p>Transfer Form</p>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Account:
-            <input 
-            type="text"
-            placeholder="0"
-            value={this.state.account}
-            onChange={this.update('account')}
-            />
-          </label>
-          <label>
-            Amount:
-            <input 
-            type="number"
-            placeholder="0"
-            value={this.state.amount}
-            onChange={this.update('amount')}
-            />
-            <input type="submit"/>
-          </label>
+        <p className="center">Transfer Form</p>
+        <form onSubmit={this.handleSubmit} className="center">
+          <div className="vertical">
+            <label >
+              Account:
+              <input 
+              type="text"
+              placeholder="0"
+              value={this.state.account}
+              onChange={this.update('account')}
+              />
+            </label>
+            <label>
+              Amount:
+              <input 
+              type="number"
+              placeholder="0"
+              value={this.state.amount}
+              onChange={this.update('amount')}
+              />
+              <input type="submit"/>
+            </label>
+          </div>
         </form>
       </div>
     )

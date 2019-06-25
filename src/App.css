@@ -1,0 +1,23 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+button {
+  display: block;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -24,8 +24,8 @@ export class TransactionForm extends React.Component {
   render() {
     return (
     <form>
-      <p>Deposit Form</p>
-      <label>
+      <p className="center">Transaction Form</p>
+      <label className="center">
         Amount:
         <input 
         type="number"

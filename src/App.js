@@ -116,24 +116,26 @@ class App extends React.Component {
   render = () => {
     const { accounts, totalSupply, balances, allowances } = this.state;
     return (
-      <div className="App">
-        <Header 
-          account={accounts[0]} 
-          totalSupply={totalSupply} />
-        <AccountsIndex 
-          owner={accounts[0]}
-          accounts={accounts}
-          balances={balances}
-          allowances={allowances} />
-        <TransactionForm 
-          deposit={this.deposit}
-          withdraw={this.withdraw} />
-        <TransferForm transfer={this.transfer} />
-        <ApprovalForm 
-          approve={this.approve}
-          increaseApproval={this.increaseApproval}
-          decreaseApproval={this.decreaseApproval} />
-        <TransferFromForm transferFrom={this.transferFrom} />
+      <div className="app-container">
+        <div>
+          <Header 
+            account={accounts[0]} 
+            totalSupply={totalSupply} />
+          <AccountsIndex 
+            owner={accounts[0]}
+            accounts={accounts}
+            balances={balances}
+            allowances={allowances} />
+          <TransactionForm 
+            deposit={this.deposit}
+            withdraw={this.withdraw} />
+          <TransferForm transfer={this.transfer} />
+          <ApprovalForm 
+            approve={this.approve}
+            increaseApproval={this.increaseApproval}
+            decreaseApproval={this.decreaseApproval} />
+          <TransferFromForm transferFrom={this.transferFrom} />
+        </div>
       </div>
     );
   }
