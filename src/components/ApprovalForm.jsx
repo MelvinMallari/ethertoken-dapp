@@ -9,22 +9,19 @@ export class ApprovalForm extends Component {
   setAllowance = (e) => {
     e.preventDefault();
     this.props.approve(this.state.account, this.state.amount);
-    this.setState({account: ''});
-    this.setState({amount: ''});
+    this.setState({account: '', amount: ''});
   }
 
   increaseApproval = (e) => {
     e.preventDefault();
     this.props.increaseApproval(this.state.account, this.state.amount);
-    this.setState({account: ''});
-    this.setState({amount: ''});
+    this.setState({account: '', amount: ''});
   }
 
   decreaseApproval = (e) => {
     e.preventDefault();
     this.props.decreaseApproval(this.state.account, this.state.amount);
-    this.setState({account: ''});
-    this.setState({amount: ''});
+    this.setState({account: '', amount: ''});
   }
 
   update = (field) => {
@@ -32,7 +29,6 @@ export class ApprovalForm extends Component {
   }
   
   render() {
-    const { setAllowance, increaseApproval, decreaseApproval } = this.props;
     return (
       <div>
         <p>Approval Form</p>
@@ -54,9 +50,9 @@ export class ApprovalForm extends Component {
             value={this.state.amount}
             onChange={this.update('amount')}
             />
-            <button type="button" onClick={this.setAllowance.bind(this)}>Set Approval</button>
-            <button type="button" onClick={this.increaseApproval.bind(this)}>Increase Approval</button>
-            <button type="button" onClick={this.decreaseApproval.bind(this)}>Decrease Approval</button>
+            <button type="button" onClick={this.setAllowance}>Set Approval</button>
+            <button type="button" onClick={this.increaseApproval}>Increase Approval</button>
+            <button type="button" onClick={this.decreaseApproval}>Decrease Approval</button>
           </label>
         </form>
       </div>

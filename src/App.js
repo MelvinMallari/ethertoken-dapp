@@ -2,9 +2,9 @@ import React from 'react';
 import Web3 from 'web3';
 import './App.css';
 import AccountsIndex from './components/AccountsIndex';
-import DepositForm from './components/DepositForm';
-import WithdrawForm from './components/WithdrawForm';
+import TransactionForm from './components/TransactionForm';
 import TransferForm from './components/TransferForm';
+import TransferFromForm from './components/TransferFromForm';
 import ApprovalForm from './components/ApprovalForm';
 import Header from './components/Header';
 import { ETHERTOKEN_ABI, ETHERTOKEN_ADDRESS } from './config';
@@ -77,6 +77,13 @@ class App extends React.Component {
     });
   }
 
+  transferFrom = (sender, source, to, amount) => {
+    this.state.contract.methods.transferFrom(source, to, amount).send({from: sender}, () => {
+      this.loadAccountBalances();
+      this.loadAllowances();
+    });
+  }
+
   withdraw = (amount) => {
     const { contract, accounts } = this.state;
     contract.methods.withdraw(amount).send({from: accounts[0]}, () => {
@@ -118,13 +125,15 @@ class App extends React.Component {
           accounts={accounts}
           balances={balances}
           allowances={allowances} />
-        <DepositForm deposit={this.deposit} />
-        <WithdrawForm withdraw={this.withdraw} />
+        <TransactionForm 
+          deposit={this.deposit}
+          withdraw={this.withdraw} />
         <TransferForm transfer={this.transfer} />
         <ApprovalForm 
           approve={this.approve}
           increaseApproval={this.increaseApproval}
           decreaseApproval={this.decreaseApproval} />
+        <TransferFromForm transferFrom={this.transferFrom} />
       </div>
     );
   }

@@ -1,13 +1,19 @@
 import React from 'react'
 
-export class DepositForm extends React.Component {
+export class TransactionForm extends React.Component {
   state = {
     amount: 0
   }
 
-  handleSubmit = (e) => {
+  deposit = (e) => {
     e.preventDefault();
     this.props.deposit(this.state.amount);
+    this.setState({amount: 0});
+  }
+
+  withdraw = (e) => {
+    e.preventDefault();
+    this.props.withdraw(this.state.amount);
     this.setState({amount: 0});
   }
 
@@ -17,7 +23,7 @@ export class DepositForm extends React.Component {
 
   render() {
     return (
-    <form onSubmit={this.handleSubmit}>
+    <form>
       <p>Deposit Form</p>
       <label>
         Amount:
@@ -27,12 +33,13 @@ export class DepositForm extends React.Component {
         value={this.state.amount}
         onChange={this.update('amount')}
         />
-        <input type="submit" value="Deposit"/>
+        <button onClick={this.deposit}>Deposit</button>
+        <button onClick={this.withdraw}>Withdraw</button>
       </label>
     </form>
     )
   }
 }
 
-export default DepositForm
+export default TransactionForm
 
