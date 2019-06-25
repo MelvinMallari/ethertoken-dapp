@@ -2,8 +2,32 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-button {
-  display: block;
+label {
+  font-size: 14px;
+}
+
+button:hover {
+  background: #c7d3e5;
+}
+
+table {
+  text-align: center;
+}
+
+td, th {
+  padding: 5px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 55px;
+  border: none;
+  background-color: fixed;
+  background: #e4e4e4;
+  color: #6B778C;
+  border-radius: 2px;  
+  padding: 5px 10px
 }
 
 .app-container {
@@ -20,4 +44,25 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.column {
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.button-wrapper-sb {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.button-wrapper-c {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 200px;
 }

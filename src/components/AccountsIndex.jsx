@@ -6,8 +6,8 @@ function AccountsIndex(props) {
     <thead>
       <tr>
         <th>Account</th>
-        <th>Balance (wei)</th>
-        <th>Allowance (wei)</th>
+        <th>Balance [wei]</th>
+        <th>Allowance [wei]</th>
       </tr>
     </thead>
   )

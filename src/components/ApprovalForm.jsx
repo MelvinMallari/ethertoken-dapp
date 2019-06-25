@@ -34,28 +34,31 @@ export class ApprovalForm extends Component {
         <p className="center">Approval Form</p>
         <form className="center">
           <div className="vertical">
+          <div className="column">
+            <label for="account"> Account: </label>
+              <input 
+              id="account"
+              type="text"
+              placeholder="Account..."
+              value={this.state.account}
+              onChange={this.update('account')} />
+          </div>
 
-          <label>
-            Account:
-            <input 
-            type="text"
-            placeholder="0"
-            value={this.state.account}
-            onChange={this.update('account')}
-            />
-          </label>
-          <label>
-            Amount:
-            <input 
-            type="number"
-            placeholder="0"
-            value={this.state.amount}
-            onChange={this.update('amount')}
-            />
-            <button type="button" onClick={this.setAllowance}>Set Approval</button>
-            <button type="button" onClick={this.increaseApproval}>Increase Approval</button>
-            <button type="button" onClick={this.decreaseApproval}>Decrease Approval</button>
-          </label>
+          <div className="column">
+            <label for="amount"> Amount: </label>
+              <input 
+              id="amount"
+              type="number"
+              placeholder="0"
+              value={this.state.amount}
+              onChange={this.update('amount')} />
+          </div>
+
+          <div className="button-wrapper-sb">
+            <button className="button" type="button" onClick={this.setAllowance}>Set</button> 
+            <button className="button" type="button" onClick={this.increaseApproval}>Increase</button>
+            <button className="button" type="button" onClick={this.decreaseApproval}>Decrease</button>
+          </div>
           </div>
         </form>
       </div>
